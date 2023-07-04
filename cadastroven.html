@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Realizado</title>
+    <link rel="icon" href="./imagens/casa-icone.jpg" type="image/x-icon">
+
+    <script>
+        function fecharPagina() {
+  window.close();
+}
+    </script>
+
+    <STyle>
+        body {
+            background-color: rgb(80, 80, 80, .3);
+        }
+
+        .divisao {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%); 
+        }
+
+        h1 {
+            width: 400px;
+            font-size: 40px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            top: 100%;
+            left: 50%;
+            border: 1px black solid;
+            padding: 10px;
+            text-align: center;
+            background-color: rgb(80, 80, 80, .2);
+        }
+
+       .botao-geral {
+            position: absolute;
+            left: 45%;
+            transform: translate(-45%);
+       }
+
+       .botao-anterior {
+        padding: 5px;
+        border-radius: 5px;
+        background-color: rgb(80, 80, 80, .3);
+       }
+
+       .botao-fechar {
+        padding: 5px;
+        border-radius: 5px;
+        background-color: rgb(80, 80, 80, .3);
+       }
+
+       .botao-anterior:hover {
+        color: #fff;
+        background-color: rgb(80, 80, 80, .5);
+       }
+
+       .botao-fechar:hover {
+        color: #fff;
+        background-color: rgb(80, 80, 80, .5);
+       }
+
+       .botao-anterior:active {
+        color: #000000;
+        background-color: rgb(80, 80, 80, .3);
+       }
+
+       .botao-fechar:active {
+        color: #000000;
+        background-color: rgb(80, 80, 80, .3);
+       }
+
+    </STyle>
+</head>
+<body>
+    <div class="divisao">
+    <h1>Venda Realizada!</h1>
+        <div class="botao-geral">
+            <a href="./vendas.html"><button class="botao-anterior">Voltar para página anterior</button></a>
+            <button class="botao-fechar" onclick="fecharPagina()">Fechar</button>
+        </div>
+    </div>
+    
+</body>
+</html>

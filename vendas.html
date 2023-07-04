@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Cadastrar venda</title>
+        <link rel="icon" href="./imagens/casa-icone.jpg" type="image/x-icon">
+        <link href="./css/estilo.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./css/scrollbar.css">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+       <script>
+        function formatarData(input) {
+  var valor = input.value.replace(/\D/g, '');
+  var tamanho = valor.length;
+
+  if (tamanho > 2) {
+    valor = valor.substring(0, 2) + '/' + valor.substring(2);
+  }
+  if (tamanho > 4) {
+    valor = valor.substring(0, 5) + '/' + valor.substring(5, 9);
+  }
+
+  input.value = valor;
+}
+        function formatCurrency(input) {
+            // Obtém o valor digitado
+            let value = input.value;
+
+            // Remove todos os caracteres não numéricos
+            value = value.replace(/\D/g, '');
+
+            // Formata o valor com o símbolo de real e as pontuações
+            value = (value / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            // Atualiza o valor no campo de entrada
+            input.value = value;
+        }
+      
+        function showPaymentOptions() {
+            var paymentMethod = document.getElementById("payment-method").value;
+            var installmentInputs = document.getElementById("installment-inputs");
+            var installmentSelect = document.getElementById("installment-select");
+            var installmentValueInput = document.getElementById("installment-value");
+
+            if (paymentMethod === "parcelado") {
+                installmentInputs.style.display = "block";
+            } else {
+                installmentInputs.style.display = "none";
+            }
+        }
+
+        function validarCampos() {
+            var campos = document.querySelectorAll('input');
+            var camposPreenchidos = true;
+
+            for (var i = 0; i < campos.length; i++) {
+                if (campos[i].value === '') {
+                    camposPreenchidos = false;
+                    break;
+                }
+            }
+
+            if (!camposPreenchidos) {
+                event.preventDefault();
+                alert('Por favor, preencha todos os campos!');
+            }
+        }
+
+       </script>
+          
+    </head>
+    <body class="corpo-registro">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main class="main">
+                    <div class="container" id="corpo-container">
+                                        <form class="fundo-registro">
+                                            <div class="row">
+                                                <div class="form-floating mb-3">
+                                                    <div class="form-floating  mb-md-0">
+                                                        <input type="text" id="dataInput" placeholder="DD/MM/AAAA" maxlength="10" oninput="formatarData(this)">
+                                                        <figcaption for="inputData">Data</figcaption>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-floating mb-3">
+                                                    <div class="form-floating  mb-md-0">
+                                                        <select class="form-control" id="inputOfficeRegistro">
+                                                            <option value="" selected disabled>Selecionar tipo de empreendimento</option>
+                                                            <option value="casa">Casa</option>
+                                                            <option value="apto">Apartamento</option>
+                                                        </select>
+                                                        <label for="inputEmpreendimento" id="tipoEmpreendimento">Empreendimento</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6" id="fullNameVendas">
+                                                    <div class="form-floating  mb-md-0">
+                                                        <input class="form-control" id="inputFirstName" type="text"
+                                                            placeholder="Enter your full name" />
+                                                        <label for="inputFullName" id="fullName">Nome completo</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-floating mb-3" id="idcontatoUm">
+                                                <input class="form-control" id="telefoneInput" type="text"
+                                                    placeholder="Digite o número de telefone" oninput="formatarTelefone(this)" />
+                                                <label for="telefoneInput">Celular</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="idcontatoDois">
+                                                <input class="form-control" id="telefoneInput" type="text"
+                                                    placeholder="Digite o número de telefone" oninput="formatarTelefone(this)" />
+                                                <label for="telefoneInput">Telefone</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="corretor">
+                                                <select class="form-control" class="form-select" id="inputCorretorName">
+                                                    <option value="" selected disabled>Selecionar Corretor</option>
+                                                    <option value="corretor1">Maurício Alves</option>
+                                                    <option value="corretor2">Ricardo Ximenes</option>
+                                                    <option value="corretor3">Sophia Camargo</option>
+                                                    <option value="corretor4">Vanessa Palomanes</option>
+                                                    <option value="corretor5">Soraya Machado</option>
+                                               </select>
+                                                <label for="inputCorretor" id="corretorRegistro">Corretor</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="gerente">
+                                                <select class="form-control" class="form-select" id="inputGerenteName">
+                                                    <option value="" selected disabled>Selecionar Gerente</option>
+                                                    <option value="gerente1">Pedro Sampaio</option>
+                                                    <option value="gerente2">Ryan Reynolds</option>
+                                                    <option value="gerente3">Mauro Ramos</option>
+                                                    <option value="gerente4">Guilherme Figeuiredo</option>
+                                                    <option value="gerente5">Arnaldo César Coelho</option>
+                                               </select>
+                                                <label for="inputGerente" id="gerenteRegistro">Gerente</label>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="form-floating mb-3">
+                                                    <div class="form-floating mb-md-0">
+                                                        <input type="text" id="reais" class="form-control" onchange="showPaymentOptions()">
+                                                        <label for="reais">Valor do empreendimento:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-floating mb-3" id="statusVenda">
+                                                <select class="form-control" class="form-select" id="inputStatus">
+                                                    <option value="" selected disabled>Status</option>
+                                                    <option value="tipo1">Em aberto</option>
+                                                    <option value="tipo2">Venda realizada</option>
+                                               </select>
+                                                <label for="inputStatusVenda" id="statusRegistro">Status da Venda</label>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-floating mb-3">
+                                                    <div class="form-floating  mb-md-0">
+                                                        <input  class="form-control" type="text" id="dataPagInput" placeholder="DD/MM/AAAA" maxlength="10" oninput="formatarData(this)">
+                                                        <label for="inputDataPgt">Data de pagamento</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-floating ">
+                                                    <div class="form-floating  mb-md-0" id="payment">
+                                                        <select id="payment-method" class="form-control" onchange="showPaymentOptions()">
+                                                             <option value="" selected disabled>Selecione forma de pagamento</option>
+                                                             <option value="avista">À vista</option>
+                                                                <option value="parcelado">Parcelado</option>
+                                                        </select>
+                                                        <label for="payment-method">Forma de pagamento:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                        <div id="installment-inputs" style="display: none;">
+                                            <div class="row">
+                                                <div class="form-floating mb-3">
+                                                    <div class="form-floating  mb-md-0" id="parcelasNumero">
+                                                                <select id="installment-select" class="form-control">
+                                                                    <option value="" selected disabled></option>
+                                                                    <script>
+                                                                        // Preenche as opções de parcelas
+                                                                        for (var i = 20; i <= 150; i++) {
+                                                                          document.write('<option value="' + i + '">' + i + 'x</option>');
+                                                                      }
+                                                                    </script>
+                                                                </select>
+                                                                <label for="installment-select">Número de parcelas:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-floating">
+                                                    <div class="form-floating  mb-md-0" id="parcelasValor">
+                                                        <input id="installment-value" type="text" class="form-control" placeholder="R$ 0,00">
+                                                        <label for="installment-value">Valor da parcela:</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>    
+                                           
+                                            <div class="mt-4 mb-0">
+                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="./cadastroven.html"
+                                                    onclick="validarCampos()">Cadastrar venda</a></div>
+                                            </div>
+                                        </form>
+                    </div>
+                </main>
+            </div>
+           
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
